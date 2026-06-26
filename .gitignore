@@ -1,0 +1,19 @@
+# ── OS & system files ────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# ── Windows user profile files (never commit these) ──────
+NTUSER.DAT
+NTUSER.DAT*
+ntuser.dat*
+ntuser.ini
+
+# ── Accidentally dropped files ────────────────────────────
+*.exe
+*.xml
+*.tar
+*.ipynb
+AppData/
+OneDrive/

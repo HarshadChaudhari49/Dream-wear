@@ -1,0 +1,296 @@
+/* ─── RESET ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  background-color: #FFFBF7;
+  color: #2B2530;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+a { text-decoration: none; color: inherit; }
+
+/* ─── SCROLLBAR ────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E8DDD9; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #B5485A; }
+
+/* ─── KEYFRAMES ────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes heartBeat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.3); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.2); }
+  70%  { transform: scale(1); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── ANIMATION UTILITIES ──────────────────────────────────────────── */
+.fade-in   { animation: fadeIn  0.35s ease forwards; }
+.slide-up  { animation: slideUp 0.45s ease forwards; }
+.scale-in  { animation: scaleIn 0.3s  ease forwards; }
+
+.delay-100 { animation-delay: 0.1s; opacity: 0; }
+.delay-200 { animation-delay: 0.2s; opacity: 0; }
+.delay-300 { animation-delay: 0.3s; opacity: 0; }
+.delay-400 { animation-delay: 0.4s; opacity: 0; }
+
+/* ─── HOVER UTILITIES ──────────────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(43, 37, 48, 0.13);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-dim { transition: opacity 0.18s ease; }
+.hover-dim:hover { opacity: 0.8; }
+
+/* ─── PRODUCT CARD IMAGE ZOOM ──────────────────────────────────────── */
+.card-img-wrap {
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+.card-img-wrap img {
+  transition: transform 0.45s ease;
+}
+.card-img-wrap:hover img {
+  transform: scale(1.06);
+}
+
+/* ─── SKELETON LOADER ──────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f3e1e4 25%, #fdf0f2 50%, #f3e1e4 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 10px;
+}
+
+/* ─── MASONRY GRID (showcase feed) ────────────────────────────────── */
+.masonry-grid {
+  columns: 3;
+  column-gap: 20px;
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .masonry-grid { columns: 2; }
+}
+@media (max-width: 560px) {
+  .masonry-grid { columns: 1; }
+}
+
+/* ─── HORIZONTAL SCROLL ROW ────────────────────────────────────────── */
+.scroll-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.scroll-row::-webkit-scrollbar { height: 0; }
+.scroll-row > * { scroll-snap-align: start; flex-shrink: 0; }
+
+/* ─── SPEECH BUBBLE ─────────────────────────────────────────────────── */
+.speech-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 14px 14px 14px 0;
+  padding: 14px 16px;
+  box-shadow: 0 2px 12px rgba(43, 37, 48, 0.07);
+}
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-width: 10px 10px 0 0;
+  border-style: solid;
+  border-color: #FFFFFF transparent transparent transparent;
+}
+
+/* ─── NAV ACTIVE INDICATOR ──────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  transition: color 0.18s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #B5485A;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link.active { color: #B5485A; }
+
+/* ─── FILTER CHIP ───────────────────────────────────────────────────── */
+.chip {
+  transition: all 0.18s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.chip:hover {
+  border-color: #B5485A !important;
+  background-color: #FDF0F2 !important;
+}
+
+/* ─── HEART BUTTON ──────────────────────────────────────────────────── */
+.heart-btn {
+  transition: transform 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+.heart-btn:hover { transform: scale(1.15); }
+.heart-btn.liked { animation: heartBeat 0.5s ease; }
+
+/* ─── GRADIENT TEXT ─────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #B5485A 0%, #8B2E42 50%, #C9A86C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── STATUS BADGE ──────────────────────────────────────────────────── */
+.status-submitted       { background: #F5F0F0; color: #6B6B6B; }
+.status-in_review       { background: #FEF3CD; color: #856404; }
+.status-in_progress     { background: #EAF0E9; color: #3D4F3B; }
+.status-delivered       { background: #E8F4FD; color: #1a6091; }
+.status-live            { background: #F3E1E4; color: #B5485A; }
+.status-declined_paused { background: #F5F0F0; color: #6B6B6B; }
+
+/* ─── INPUT FOCUS ───────────────────────────────────────────────────── */
+.form-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.form-input:focus {
+  border-color: #B5485A !important;
+  box-shadow: 0 0 0 3px rgba(181, 72, 90, 0.1);
+}
+
+/* ─── HERO GRADIENT ANIMATION ───────────────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(-45deg, #2B2530, #4A2535, #3D1E2A, #2B2530);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ─── MODAL BACKDROP ────────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 37, 48, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  animation: fadeIn 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── TOAST ─────────────────────────────────────────────────────────── */
+.toast-enter {
+  animation: toastIn 0.35s ease forwards;
+}
+
+/* ─── RESPONSIVE GRID ───────────────────────────────────────────────── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ─── DIVIDER ───────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #E8DDD9, transparent);
+  margin: 0;
+  border: none;
+}
+
+/* ─── STAGE TIMELINE ────────────────────────────────────────────────── */
+.timeline-line {
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #B5485A, #F3E1E4);
+}

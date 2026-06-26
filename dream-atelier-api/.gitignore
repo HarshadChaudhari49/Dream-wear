@@ -1,0 +1,66 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+
+# ── Virtual environments ─────────────────────────────────
+venv/
+venv310/
+.venv/
+env/
+ENV/
+
+# ── Django ───────────────────────────────────────────────
+*.sqlite3
+/staticfiles/
+/media/
+local_settings.py
+db.sqlite3
+
+# ── Environment & secrets ────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# ── Testing & coverage ───────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.cover
+.tox/
+
+# ── Build & distribution ─────────────────────────────────
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+logs/
+
+# ── IDEs ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Migrations (keep tracked — intentionally not ignored) ─
+# apps/*/migrations/*.py  <-- do NOT ignore these
+
+# ── Docs artifacts ───────────────────────────────────────
+docs/_build/

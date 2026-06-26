@@ -1,0 +1,58 @@
+# ── Dependencies ─────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ── Expo ─────────────────────────────────────────────────
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# ── EAS / native builds ───────────────────────────────────
+android/
+ios/
+*.jks
+*.p8
+*.p12
+*.mobileprovision
+*.orig.*
+google-services.json
+GoogleService-Info.plist
+
+# ── Environment & secrets ────────────────────────────────
+.env
+.env.*
+!.env.example
+*.local
+*.key
+
+# ── Metro bundler cache ───────────────────────────────────
+.metro-health-check*
+.babel_cache/
+
+# ── Testing ──────────────────────────────────────────────
+coverage/
+*.lcov
+
+# ── TypeScript ───────────────────────────────────────────
+*.tsbuildinfo
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+npm-debug.*
+yarn-debug.log*
+yarn-error.log*
+
+# ── IDEs ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
